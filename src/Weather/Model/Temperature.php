@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Weather\Model;
 
 final class Temperature
 {

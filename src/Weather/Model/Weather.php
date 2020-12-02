@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Weather\Model;
 
 final class Weather
 {
@@ -12,7 +12,8 @@ final class Weather
         Humidity $humidity,
         Temperature $temperature,
         ?Wind $wind = null
-    ) {
+    )
+    {
         $this->humidity = $humidity;
         $this->temperature = $temperature;
         $this->wind = $wind;
@@ -38,6 +39,15 @@ final class Weather
         return $this->humidity->equals($other->getHumidity())
             && $this->wind->equals($other->getWind())
             && (($this->temperature && $this->temperature->equals($other->getTemperature()))
-            || (!$this->temperature && $other->getTemperature() === null));
+                || (!$this->temperature && $other->getTemperature() === null));
+    }
+
+    public function toArray()
+    {
+        return [
+            'humidity' => $this->humidity ? $this->humidity->getValue() : null,
+            'wind' => $this->wind ? $this->wind->getValue() : null,
+            'temperature' => $this->temperature ? $this->temperature->getValue() : null,
+        ];
     }
 }

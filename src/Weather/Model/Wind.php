@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Weather\Model;
 
 final class Wind
 {
@@ -9,7 +9,7 @@ final class Wind
     public function __construct(int $wind)
     {
         if ($wind < 0) {
-            throw new \InvalidArgumentException('Wind is not legit :(');
+            throw new \InvalidArgumentException('Wind is not legit :(' . $wind);
         }
         $this->wind = $wind;
     }
