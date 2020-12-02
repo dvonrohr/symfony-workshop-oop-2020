@@ -36,6 +36,11 @@ services:
 
     App\Weather\WeatherRequestHandler:
         arguments:
-            - [!tagged 'app.weather_fetcher']
+            - !tagged_iterator app.weather_fetcher
 
     App\Weather\WeatherRequestHandlerInterface: '@App\Weather\WeatherRequestHandler'
+
+    App\Weather\CachedWeatherRequestHandler:
+        decorates: App\Weather\WeatherRequestHandler
+        arguments:
+            - '@.inner'
