@@ -1,25 +1,26 @@
 <?php
 
-namespace App\ValueObjects;
+namespace App\Model;
 
-class Humidity
+final class Humidity
 {
     private float $humidity;
 
     public function __construct(float $humidity)
     {
-        if ($humidity > 1.0 || $humidity < 0.1) {
+        if ($humidity > 1 || $humidity < 0) {
             throw new \InvalidArgumentException('Should be between 0 and 1');
         }
         $this->humidity = $humidity;
     }
 
-    public function getValue(): float {
+    public function getValue()
+    {
         return $this->humidity;
     }
 
-    public function equals(self $humidity): bool
+    public function equals(self $other): bool
     {
-        return $this->humidity === $humidity->getValue();
+        return $this->humidity === $other->humidity;
     }
 }
