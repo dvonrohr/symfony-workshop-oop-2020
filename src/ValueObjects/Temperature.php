@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataObjects;
+namespace App\ValueObjects;
 
 class Temperature
 {
@@ -11,7 +11,12 @@ class Temperature
         $this->temperature = $temperature;
     }
 
-    public function __toString(): string {
+    public function getValue(): float {
         return $this->temperature;
+    }
+
+    public function equals(self $temperature): bool
+    {
+        return $this->temperature === $temperature->getValue();
     }
 }
