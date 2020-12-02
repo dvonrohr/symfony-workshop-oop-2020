@@ -2,7 +2,6 @@
 
 namespace App\ValueObjects;
 
-
 class Humidity
 {
     private float $humidity;
